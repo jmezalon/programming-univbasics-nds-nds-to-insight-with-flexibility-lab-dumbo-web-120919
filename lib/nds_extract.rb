@@ -82,25 +82,33 @@ def gross_per_studio(collection)
   index = 0
   sum = 0
   result = {}
-  # answer = []
+  unicStudio = {}
+   arr = []
   while index < collection.length do
-    unicStudio = collection[index][:studio]
-    # p unicStudio
-    # p collection
-    gross = collection[index][:worldwide_gross]
-    # sum += gross
-    if !result[unicStudio]  
-      result[unicStudio] = gross unless result[unicStudio] == unicStudio
-      sum += gross
+    
+   
+
+    collection.length.times(all_movie = movie_with_director_name(collection[index][:director_name], collection[index]))
+    
+    studio = all_movie[:studio]
+
+    arr << studio
+    p studio
+    p arr
+    gross = all_movie[:worldwide_gross]
+    p gross
+    if !result[unicStudio][index]
+      result[unicStudio][index] = gross 
     else
-     
-      result[unicStudio] += gross unless result[unicStudio] == unicStudio
+      
+      result[unicStudio][index] += gross 
     end
     
     # p unicStudio
     
+    # sum += gross
     index += 1
-    # sum = gross
+    
   end
   p result
   return result 
